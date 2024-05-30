@@ -32,7 +32,7 @@ def main():
     try:
         matrix1 = read_matrix_from_file(file1)
         matrix2 = read_matrix_from_file(file2)
-    except FileNotFoundError:
+    except Exception:
         print("please provide a valid path")
         return
     print("calculating...")
