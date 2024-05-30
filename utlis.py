@@ -71,7 +71,7 @@ def multiply_matrices(m_a, m_b):
     if not test_row(m_b):
         raise TypeError("each row of m_b must be of the same size")
     if len(m_a[0]) != len(m_b):
-        raise ValueError("m_a and m_b can't be multiplied")
+        raise ValueError("m_a and m_b can't be multiplied, their dimensions are not valid")
 
     r1 = []
     i1 = 0
@@ -135,7 +135,7 @@ def write_matrix_to_file(matrix):
     """
     rows = len(matrix)
     cols = len(matrix[0])
-    with open(f"result.txt_{rows}", "w") as f:
+    with open("result.txt", "w") as f:
         f.write(f"rows={rows}\n")
         f.write(f"cols={cols}\n")
         for i, row in enumerate(matrix):
