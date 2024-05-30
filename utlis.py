@@ -39,8 +39,11 @@ def subtract_matrices(A, B):
 
 def multiply_matrices(m_a, m_b):
     """
-        doc
-        """
+    fuction to multiply 2 matrices
+    :param m_a:
+    :param m_b:
+    :return:
+    """
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
     if not isinstance(m_b, list):
@@ -93,6 +96,11 @@ def multiply_matrices(m_a, m_b):
 
 
 def read_matrix_from_file(file):
+    """
+    loading the matrix from the file to perform operation
+    :param file:
+    :return: matrix
+    """
     with open(file, 'r') as file:
         lines = file.readlines()
 
@@ -102,15 +110,35 @@ def read_matrix_from_file(file):
 
     # Initialize the matrix with zeros
     matrix = [[0 for _ in range(cols)]] * rows
-    print(f"rows = {len(matrix)}")
-    print(f"cols = {len(matrix[0])}")
 
     # Populate the matrix with the values from the file
     for line in lines[2:]:
+        if line == "\n":
+            continue
         line = line.strip("(")
         line = line.strip("\n")
         line = line.strip(")")
-        row, col, value = list(map(int, line.split(", ")))
+        try:
+            row, col, value = list(map(int, line.split(", ")))
+        except Exception:
+            raise ValueError("Input file has wrong format")
         matrix[row][col-1] = value
     return matrix
+
+def write_matrix_to_file(matrix):
+    """
+    writing the resulting matrix after operation
+    to an output file
+
+    :param matrix:
+    :return: bool
+    """
+    rows = len(matrix)
+    cols = len(matrix[0])
+    with open(f"result.txt_{rows}", "w") as f:
+        f.write(f"rows={rows}\n")
+        f.write(f"cols={cols}\n")
+        for i, row in enumerate(matrix):
+            for j, value in enumerate(row):
+                f.write(f"({i}, {j}, {value})\n")
 
