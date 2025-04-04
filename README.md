@@ -4,7 +4,7 @@ A web application built with Django that predicts the likelihood of a patient ha
 
 ---
 
-![App Banner](https://yourdomain.com/path/to/banner-image.png)
+[App Banner](https://yourdomain.com/path/to/banner-image.png)
 
 ## 🔍 Overview
 
